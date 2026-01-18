@@ -1,0 +1,284 @@
+:root {
+  --primary-color: #3498db;
+  --danger-color: #e74c3c;
+  --success-color: #2ecc71;
+  --sidebar-bg: #f8f9fa;
+  --border-color: #ddd;
+  --text-color: #333;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--text-color);
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: white;
+}
+
+/* THANH THÔNG BÁO / KẾT QUẢ */
+.notification-bar {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  padding: 15px 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #badbcc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.canvas-wrapper {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+canvas {
+  display: block;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  width: 280px;
+  background-color: var(--sidebar-bg);
+  border-left: 1px solid var(--border-color);
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.app-title {
+  margin: 0 0 10px 0;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+.panel {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.panel-title {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.btn-row {
+  display: flex;
+  gap: 8px;
+}
+.btn-row button {
+  flex: 1;
+}
+.setting-item {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+.setting-item input {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+
+/* Buttons */
+button,
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+button:hover {
+  background: #eee;
+}
+.btn-mode.active {
+  background: var(--success-color);
+  color: white;
+  border-color: #27ae60;
+  font-weight: bold;
+}
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+}
+.btn-cancel {
+  background: #95a5a6;
+  color: white;
+  border: none;
+}
+.full-width {
+  width: 100%;
+}
+select {
+  width: 100%;
+}
+
+/* --- MODAL POPUP --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-box {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+  animation: popIn 0.2s ease-out;
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.modal-box h3 {
+  margin-top: 0;
+  color: #333;
+}
+.modal-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 15px 0;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
+.modal-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+.modal-actions button {
+  padding: 8px 20px;
+  font-weight: bold;
+}
+.btn-confirm {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+}
+/* ... Giữ nguyên phần root, body, sidebar ... */
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: white;
+}
+
+/* THANH THÔNG BÁO / HƯỚNG DẪN / KẾT QUẢ */
+.notification-bar {
+  padding: 15px 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+  /* Mặc định màu xanh nhạt giống video */
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border-bottom: 2px solid #badbcc;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  min-height: 50px; /* Đảm bảo chiều cao ổn định */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Khi có Lỗi (Không tìm thấy đường) */
+.notification-bar.error {
+  background-color: #f8d7da;
+  color: #842029;
+  border-color: #f5c2c7;
+}
+
+/* Khi Hoàn thành (Hiện kết quả) */
+.notification-bar.success {
+  background-color: #cfe2ff;
+  color: #084298;
+  border-color: #b6d4fe;
+}
+
+.canvas-wrapper {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+canvas {
+  display: block;
+}
+
+/* ... Giữ nguyên Modal và Sidebar ... */
+#notification.max_flow {
+  background-color: #d9e8ff; /* Nền xanh dương nhạt giống hình mẫu */
+  color: #004a99; /* Chữ xanh dương đậm */
+  font-weight: bold; /* Chữ đậm */
+  /* Đảm bảo padding và căn giữa giống các thông báo khác */
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
